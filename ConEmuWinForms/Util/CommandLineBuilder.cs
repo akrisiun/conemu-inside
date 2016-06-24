@@ -8,16 +8,18 @@ using System.Text.RegularExpressions;
 
 namespace Microsoft.Build.Utilities
 {
-	/// <summary>
-	/// (1) Make sure values containing hyphens are quoted (RC at least requires this)
-	/// (2) Escape any embedded quotes. 
-	///     -- Literal double quotes should be written in the form \" not ""
-	///     -- Backslashes falling just before doublequotes must be doubled.
-	///     -- Literal double quotes can only occur in pairs (you cannot pass a single literal double quote)
-	/// 	-- Functional double quotes (for example to handle spaces) are best put around both name and value
-	/// 	    in switches like /Dname=value.
-	/// </summary> 
-	internal sealed class CommandLineBuilder
+    /// <summary>
+    /// (1) Make sure values containing hyphens are quoted (RC at least requires this)
+    /// (2) Escape any embedded quotes. 
+    ///     -- Literal double quotes should be written in the form \" not ""
+    ///     -- Backslashes falling just before doublequotes must be doubled.
+    ///     -- Literal double quotes can only occur in pairs (you cannot pass a single literal double quote)
+    /// 	-- Functional double quotes (for example to handle spaces) are best put around both name and value
+    /// 	    in switches like /Dname=value.
+    /// </summary> 
+
+    // internal 
+    public sealed class CommandLineBuilder
     {
 		public static readonly string License = 
 @"
