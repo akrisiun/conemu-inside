@@ -144,8 +144,13 @@ namespace ConEmu.WinForms
 
 			// Close prev session if there is one
 			_running?.CloseConsoleEmulator();
-			if(_running != null)
-				throw new InvalidOperationException("Cannot start a new console process because another console emulator session has failed to close in due time.");
+            if (_running != null)
+            {
+                if (startinfo.AllowUsedUp)
+                    _running = null;
+                else
+                    throw new InvalidOperationException("Cannot start a new console process because another console emulator session has failed to close in due time.");
+            }
 
 			_autostartinfo = null; // As we're starting, no more chance for an autostart
 			if(!IsHandleCreated)

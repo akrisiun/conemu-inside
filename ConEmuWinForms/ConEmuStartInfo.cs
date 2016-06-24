@@ -80,6 +80,8 @@ namespace ConEmu.WinForms
 			ConsoleProcessCommandLine = sConsoleProcessCommandLine;
 		}
 
+        public bool AllowUsedUp { get; set; }
+
 		/// <summary>
 		///     <para>Gets or sets an event sink for the <see cref="ConEmuSession.AnsiStreamChunkReceived" /> event even before the console process starts, which guarantees that your event sink won't miss the early data written by the console process on its very startup.</para>
 		///     <para>Settings this to a non-<c>NULL</c> value also implies on <see cref="IsReadingAnsiStream" />.</para>
@@ -421,7 +423,7 @@ namespace ConEmu.WinForms
 
 		private void AssertNotUsedUp()
 		{
-			if(_isUsedUp)
+			if(_isUsedUp && !AllowUsedUp)
 				throw new InvalidOperationException("This change is not possible because the start info object has already been used up.");
 		}
 
@@ -456,7 +458,8 @@ namespace ConEmu.WinForms
 		internal void MarkAsUsedUp()
 		{
 			_isUsedUp = true;
-		}
+            AllowUsedUp = false;
+        }
 
 		[NotNull]
 		private static string TryDeriveConEmuConsoleExtenderExecutablePath([NotNull] string sConEmuPath)
