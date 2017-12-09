@@ -102,7 +102,11 @@ namespace ConEmu.WinForms
 		/// <param name="hostcontext">Control-related parameters.</param>
 		public ConEmuSession([NotNull] ConEmuStartInfo startinfo, [NotNull] HostContext hostcontext)
 		{
-			if(startinfo == null)
+            if (Debugger.IsAttached)
+                Debugger.Break();
+
+
+            if (startinfo == null)
 				throw new ArgumentNullException(nameof(startinfo));
 			if(hostcontext == null)
 				throw new ArgumentNullException(nameof(hostcontext));

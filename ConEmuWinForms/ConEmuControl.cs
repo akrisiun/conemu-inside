@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.Drawing;
 using System.Runtime.InteropServices;
@@ -37,7 +38,10 @@ namespace ConEmu.WinForms
 
 		public ConEmuControl()
 		{
-			SetStyle(ControlStyles.AllPaintingInWmPaint | ControlStyles.UserPaint | ControlStyles.Opaque | ControlStyles.Selectable, true);
+            if (Debugger.IsAttached)
+                Debugger.Break();
+
+            SetStyle(ControlStyles.AllPaintingInWmPaint | ControlStyles.UserPaint | ControlStyles.Opaque | ControlStyles.Selectable, true);
 
 			// Prevent downsizing to zero because the current ConEmu implementation asserts on its HWND having positive dimensions
 #pragma warning disable once VirtualMemberCallInContructor
