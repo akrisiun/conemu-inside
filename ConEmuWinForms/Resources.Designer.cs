@@ -63,10 +63,10 @@ namespace ConEmu.WinForms {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
-        internal static byte[] ConEmuSettingsTemplate {
+        public static byte[] ConEmuSettingsTemplate {
             get {
                 object obj = ResourceManager.GetObject("ConEmuSettingsTemplate", resourceCulture);
-                return ((byte[])(obj));
+                return obj as byte[];
             }
         }
     }

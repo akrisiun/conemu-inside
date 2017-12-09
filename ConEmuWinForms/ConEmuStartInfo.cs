@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
+using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
 using System.Threading;
@@ -114,8 +115,17 @@ namespace ConEmu.WinForms
 				if(_baseConfiguration != null)
 					return _baseConfiguration;
 
-				var xmldoc = new XmlDocument();
-				xmldoc.Load(new MemoryStream(Resources.ConEmuSettingsTemplate));
+                XmlDocument xmldoc = null;
+
+                var template = Resources.ConEmuSettingsTemplate;
+                if (template != null)
+                {
+                    xmldoc = new XmlDocument();
+
+                    // Debugger.Break();
+                    xmldoc.Load(new MemoryStream(template));
+                }
+
 				Thread.MemoryBarrier();
 				return _baseConfiguration = xmldoc;
 			}

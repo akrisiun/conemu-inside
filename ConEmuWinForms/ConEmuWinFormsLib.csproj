@@ -1,8 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <!--    <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props"
-          Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
-          -->
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Default</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
@@ -13,23 +11,27 @@
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <TargetFrameworkProfile></TargetFrameworkProfile>
 
-    <!-- Configuration='Default'  Platform='AnyCPU'. -->
-    <!--<TargetFrameworks>net40</TargetFrameworks>-->
-    <OutputPath>..\..\bin\</OutputPath>
-     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <!-- Configuration='Default'  Platform='AnyCPU'.
+    <TargetFrameworks>net40</TargetFrameworks> 
+    <OutputPath>..\..\bin\</OutputPath>-->
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <!--<_DebugSymbolsProduced>true</_DebugSymbolsProduced>-->
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\..\..\bin\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
+    <OutputPath>..\..\bin\</OutputPath>
+    <DefineConstants>TRACE;DEBUG</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <NoWarn>1696;1591</NoWarn>
-    <DocumentationFile />
+
+    <Prefer32Bit>false</Prefer32Bit>
     <CodeAnalysisRuleSet></CodeAnalysisRuleSet>
+    <RunCodeAnalysis>false</RunCodeAnalysis>
+    <DocumentationFile />
   </PropertyGroup> 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
     <DebugSymbols>true</DebugSymbols>
@@ -85,7 +87,7 @@
     <Compile Include="WhenConsoleProcessExits.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="ConEmu.xml" />
+    <EmbeddedResource Include="ConEmu.xml" />
     <None Include="Package.nuspec">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
