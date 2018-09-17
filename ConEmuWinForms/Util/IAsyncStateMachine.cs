@@ -3,10 +3,10 @@
 
 namespace System.Runtime.CompilerServices
 {
-	internal interface IAsyncStateMachine
-	{
-		void MoveNext();
+	//internal interface IAsyncStateMachine
+	//{
+	//	void MoveNext();
 
-		void SetStateMachine(IAsyncStateMachine stateMachine);
-	}
+	//	void SetStateMachine(IAsyncStateMachine stateMachine);
+	//}
 }

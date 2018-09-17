@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Reflection;
+using System.Runtime.CompilerServices;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -56,14 +57,14 @@ namespace ConEmu.WinForms.Util
 			return completionSource.Task;
 		}
 
-		public static TaskAwaiter GetAwaiter(this Task task)
+		public static TaskAwaiter2 GetAwaiter(this Task task)
 		{
-			return new TaskAwaiter(task, true);
+			return new TaskAwaiter2(task, true);
 		}
 
-		public static TaskAwaiter<T> GetAwaiter<T>(this Task<T> task)
+		public static TaskAwaiter2<T> GetAwaiter<T>(this Task<T> task)
 		{
-			return new TaskAwaiter<T>(task, true);
+			return new TaskAwaiter2<T>(task, true);
 		}
 
 		public static TaskAwaiter GetAwaiter(this Task<Task> task)

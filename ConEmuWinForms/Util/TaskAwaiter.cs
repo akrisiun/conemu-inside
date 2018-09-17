@@ -6,13 +6,13 @@ using ConEmu.WinForms.Util;
 
 namespace System.Threading.Tasks
 {
-	internal struct TaskAwaiter : INotifyCompletion
+	internal struct TaskAwaiter2 : INotifyCompletion
 	{
 		private readonly bool _isctx;
 
 		private readonly Task _task;
 
-		internal TaskAwaiter(Task task, bool isctx = true)
+		internal TaskAwaiter2(Task task, bool isctx = true)
 		{
 			_task = task;
 			_isctx = isctx;

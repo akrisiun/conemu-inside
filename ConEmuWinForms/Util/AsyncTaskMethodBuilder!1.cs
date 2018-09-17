@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 
 namespace System.Runtime.CompilerServices
 {
-	internal struct AsyncTaskMethodBuilder<TResult>
+	internal struct AsyncTaskMethodBuilder2<TResult>
 	{
 		private TaskCompletionSource<TResult> _tasker;
 
@@ -14,14 +14,15 @@ namespace System.Runtime.CompilerServices
 			awaiter.OnCompleted(((IAsyncStateMachine)stateMachine).MoveNext);
 		}
 
-		public void AwaitUnsafeOnCompleted<TAwaiter, TStateMachine>(ref TAwaiter awaiter, ref TStateMachine stateMachine) where TAwaiter : ICriticalNotifyCompletion where TStateMachine : IAsyncStateMachine
+		public void AwaitUnsafeOnCompleted<TAwaiter, TStateMachine>(ref TAwaiter awaiter, ref TStateMachine stateMachine)
+            where TAwaiter : ICriticalNotifyCompletion where TStateMachine : IAsyncStateMachine
 		{
 			AwaitOnCompleted(ref awaiter, ref stateMachine);
 		}
 
-		public static AsyncTaskMethodBuilder<TResult> Create()
+		public static AsyncTaskMethodBuilder2<TResult> Create()
 		{
-			AsyncTaskMethodBuilder<TResult> taskMethodBuilder;
+			AsyncTaskMethodBuilder2<TResult> taskMethodBuilder;
 			taskMethodBuilder._tasker = new TaskCompletionSource<TResult>();
 			return taskMethodBuilder;
 		}
