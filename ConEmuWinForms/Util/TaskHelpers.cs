@@ -57,25 +57,25 @@ namespace ConEmu.WinForms.Util
 			return completionSource.Task;
 		}
 
-		public static TaskAwaiter2 GetAwaiter(this Task task)
-		{
-			return new TaskAwaiter2(task, true);
-		}
+		//public static TaskAwaiter2 GetAwaiter(this Task task)
+		//{
+		//	return new TaskAwaiter2(task, true);
+		//}
 
-		public static TaskAwaiter2<T> GetAwaiter<T>(this Task<T> task)
-		{
-			return new TaskAwaiter2<T>(task, true);
-		}
+		//public static TaskAwaiter2<T> GetAwaiter<T>(this Task<T> task)
+		//{
+		//	return new TaskAwaiter2<T>(task, true);
+		//}
 
-		public static TaskAwaiter GetAwaiter(this Task<Task> task)
-		{
-			return task.Unwrap().GetAwaiter();
-		}
+		//public static TaskAwaiter GetAwaiter(this Task<Task> task)
+		//{
+		//	return task.Unwrap().GetAwaiter();
+		//}
 
-		public static TaskAwaiter<T> GetAwaiter<T>(this Task<Task<T>> task)
-		{
-			return task.Unwrap().GetAwaiter();
-		}
+		//public static TaskAwaiter<T> GetAwaiter<T>(this Task<Task<T>> task)
+		//{
+		//	return task.Unwrap().GetAwaiter();
+		//}
 
 		internal static TaskScheduler GetTaskSchedulerFromContext()
 		{

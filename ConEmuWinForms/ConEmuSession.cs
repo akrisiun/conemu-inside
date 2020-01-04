@@ -727,9 +727,13 @@ namespace ConEmu.WinForms
             try
             {
                 if (string.IsNullOrEmpty(startinfo.ConEmuExecutablePath))
-                    throw new InvalidOperationException("Could not run the console emulator. The path to ConEmu.exe could not be detected.");
+                {
+                    startinfo.ConEmuExecutablePath = "ConEmu.exe";
+                    if (!File.Exists(startinfo.ConEmuExecutablePath))
+                        throw new InvalidOperationException("Could not run the console emulator. The path to ConEmu.exe could not be detected.");
+                }
                 if (!File.Exists(startinfo.ConEmuExecutablePath))
-                    throw new InvalidOperationException($"Missing ConEmu executable at location “{startinfo.ConEmuExecutablePath}”.");
+                    throw new InvalidOperationException($"Missing ConEmu executable at location “{Environment.CurrentDirectory}\\{startinfo.ConEmuExecutablePath}”.");
                 var processNew = new Process() { StartInfo = new ProcessStartInfo(startinfo.ConEmuExecutablePath, cmdl.ToString()) { UseShellExecute = false } };
 
                 // Bind process termination
