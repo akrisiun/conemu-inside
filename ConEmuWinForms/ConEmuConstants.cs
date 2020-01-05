@@ -11,7 +11,7 @@ namespace ConEmu.WinForms
 		public static readonly string ConEmuConsoleServerFileNameNoExt = "ConEmuCD";
 
 		[NotNull]
-		public static readonly string ConEmuExeName = "conemu.exe";
+		public static readonly string ConEmuExeName = "conemu64.exe";
 
 		[NotNull]
 		public static readonly string ConEmuSubfolderName = "ConEmu";
