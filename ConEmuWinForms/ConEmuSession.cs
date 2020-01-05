@@ -465,6 +465,11 @@ namespace ConEmu.WinForms
                 cmdl.AppendFileNameIfNotNull(startinfo.StartupDirectory);
             }
 
+            if (!string.IsNullOrEmpty(startinfo.ConsoleProcessExtraArgs))
+            {
+                cmdl.AppendSwitch(startinfo.ConsoleProcessExtraArgs);
+            }
+
             // ANSI Log file
             if (ansilog != null)
             {

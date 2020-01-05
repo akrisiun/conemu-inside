@@ -371,6 +371,10 @@ namespace ConEmu.WinForms
 			}
 		}
 
+        [CanBeNull]
+		public string ConsoleProcessExtraArgs { get; set; }
+
+
 		/// <summary>
 		///     <para>Gets or sets whether the console emulator view should remain open and keep displaying the last console contents after the console process specified in <see cref="ConsoleProcessCommandLine" /> terminates.</para>
 		///     <para>See comments on enum members for details on specific behavior.</para>
