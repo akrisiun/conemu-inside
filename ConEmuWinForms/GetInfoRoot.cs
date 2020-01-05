@@ -4,9 +4,6 @@ using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Xml;
-
-using ConEmu.WinForms.Util;
-
 using JetBrains.Annotations;
 
 namespace ConEmu.WinForms

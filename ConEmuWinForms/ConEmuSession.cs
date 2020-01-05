@@ -465,11 +465,6 @@ namespace ConEmu.WinForms
                 cmdl.AppendFileNameIfNotNull(startinfo.StartupDirectory);
             }
 
-            if (!string.IsNullOrEmpty(startinfo.ConsoleProcessExtraArgs))
-            {
-                cmdl.AppendSwitch(startinfo.ConsoleProcessExtraArgs);
-            }
-
             // ANSI Log file
             if (ansilog != null)
             {
@@ -499,10 +494,20 @@ namespace ConEmu.WinForms
                 default:
                     throw new ArgumentOutOfRangeException("ConEmuStartInfo" + "::" + "WhenConsoleProcessExits", startinfo.WhenConsoleProcessExits, "This is not a valid enum value.");
             }
-            cmdl.AppendSwitchIfNotNull("-cur_console:", $"{(startinfo.IsElevated ? "a" : "")}{sConsoleExitMode}");
+
+            if (string.IsNullOrEmpty(startinfo.ConsoleProcessExtraArgs))
+            {
+                cmdl.AppendSwitchIfNotNull("-cur_console:", $"{(startinfo.IsElevated ? "a" : "")}{sConsoleExitMode}");
+            }
 
             // And the shell command line itself
             cmdl.AppendSwitch(startinfo.ConsoleProcessCommandLine);
+
+            if (!string.IsNullOrEmpty(startinfo.ConsoleProcessExtraArgs))
+            {
+                cmdl.AppendSwitch(startinfo.ConsoleProcessExtraArgs);
+            }
+
 
             return cmdl;
         }
@@ -702,6 +707,12 @@ namespace ConEmu.WinForms
                     if (rootinfo.ExitCode.HasValue)
                         return rootinfo.ExitCode.Value;
 
+                    if (!rootinfo.Pid.HasValue && rootinfo.State == GetInfoRoot.States.NotStarted) {
+                        var info = this.StartInfo;
+                        if (!_process.HasExited && _process.Handle != IntPtr.Zero)
+                            _process.Start();
+                    }
+
                     // If it has started already, must get a PID
                     // Await till the process exits and loop to reask conemu for its result
                     // If conemu exits too in this time, then it will republish payload exit code as its own exit code, and implementation will use it
@@ -761,6 +772,7 @@ namespace ConEmu.WinForms
 
                 if (!processNew.Start())
                     throw new Win32Exception("The process did not start.");
+
                 return processNew;
             }
             catch (Win32Exception ex)
