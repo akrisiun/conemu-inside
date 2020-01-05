@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Reflection;
-using System.Runtime.CompilerServices;
 using System.Threading;
 using System.Threading.Tasks;
-
 using JetBrains.Annotations;
+
+#pragma warning disable VSTHRD200
 
 namespace ConEmu.WinForms.Util
 {

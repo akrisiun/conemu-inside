@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using System.Xml;
 using JetBrains.Annotations;
 
+#pragma warning disable IDE0018, IDE0019, IDE1006
+
 namespace ConEmu.WinForms
 {
 	/// <summary>

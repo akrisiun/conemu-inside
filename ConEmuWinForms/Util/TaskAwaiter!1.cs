@@ -22,6 +22,7 @@ namespace System.Threading.Tasks
 
 		public TResult GetResult()
 		{
+#pragma warning disable VSTHRD002, VSTHRD110
 			return _task.Result;
 		}
 

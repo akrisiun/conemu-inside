@@ -7,10 +7,10 @@ using System.Text;
 using System.Threading.Tasks;
 
 using ConEmu.WinForms.Util;
-
 using JetBrains.Annotations;
-
 using Microsoft.Build.Utilities;
+
+#pragma warning disable IDE0018, IDE0019, IDE0039, IDE1006
 
 namespace ConEmu.WinForms
 {
@@ -54,6 +54,7 @@ namespace ConEmu.WinForms
 
 			// Bring the call on another thread, because placing the call on the same thread as ConEmu might cause a deadlock when it's still in the process of initialization
 			// (the GuiMacro stuff was designed for out-of-process comm and would blocking-wait for init to complete)
+#pragma warning disable VSTHRD105
 			return Task.Factory.StartNew(() =>
 			{
 				lock(_lock) // Don't allow unloading in parallel
@@ -104,6 +105,7 @@ namespace ConEmu.WinForms
 
 			try
 			{
+#pragma warning disable VSTHRD105
 				Task<Task<GuiMacroResult>> taskStart = Task.Factory.StartNew(() =>
 				{
 					var processExtender = new Process() {StartInfo = new ProcessStartInfo(sConEmuConsoleExtenderExecutablePath, cmdl.ToString()) {WindowStyle = ProcessWindowStyle.Hidden, CreateNoWindow = true, RedirectStandardError = true, RedirectStandardOutput = true, UseShellExecute = false}};

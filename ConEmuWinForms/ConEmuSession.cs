@@ -15,12 +15,11 @@ using System.Windows.Forms;
 using System.Xml;
 
 using ConEmu.WinForms.Util;
-
 using JetBrains.Annotations;
-
 using Microsoft.Build.Utilities;
-
 using Timer = System.Windows.Forms.Timer;
+
+#pragma warning disable VSTHRD104
 
 namespace ConEmu.WinForms
 {
@@ -224,6 +223,7 @@ namespace ConEmu.WinForms
 
             // No meaningful message pump on an MTA thread by contract, so can just do a blocking wait
             if (Thread.CurrentThread.GetApartmentState() == ApartmentState.MTA)
+#pragma warning disable VSTHRD105, VSTHRD102, VSTHRD110, VSTHRD002, VSTHRD200
                 return task.Result;
 
             // On an STA thread we should be pumping
@@ -546,6 +546,8 @@ namespace ConEmu.WinForms
                 XmlElement xmlSoftware = xmldoc.DocumentElement;
                 if (xmlSoftware == null)
                     throw new InvalidOperationException("Not expecting the cloned element to be NULL.");
+
+#pragma warning disable IDE0019
                 var xmlConEmu = xmlSoftware.SelectSingleNode($"{ConEmuConstants.XmlElementKey}[@{ConEmuConstants.XmlAttrName}='{ConEmuConstants.XmlValueConEmu}']") as XmlElement;
                 if (xmlConEmu == null)
                 {

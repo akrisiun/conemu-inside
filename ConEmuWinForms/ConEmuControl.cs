@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.Drawing;
 using System.Runtime.InteropServices;
@@ -7,8 +6,9 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 using ConEmu.WinForms.Util;
-
 using JetBrains.Annotations;
+
+#pragma warning disable IDE0018, IDE0019, IDE0039, IDE1006, IDE0060
 
 namespace ConEmu.WinForms
 {
@@ -66,6 +66,7 @@ namespace ConEmu.WinForms
 
                 // Invariant: if changed to TRUE past the normal AutoStartInfo checking point
                 if ((value != null) && (IsHandleCreated))
+#pragma warning disable VSTHRD012
                     Start(value);
             }
         }
@@ -164,6 +165,7 @@ namespace ConEmu.WinForms
 			_running = session;
 			StateChanged?.Invoke(this, EventArgs.Empty);
 
+#pragma warning disable VSTHRD102, VSTHRD110
 			// Wait for its exit
 			session.WaitForConsoleEmulatorCloseAsync()
                 .ContinueWith(scheduler : TaskScheduler.FromCurrentSynchronizationContext(), continuationAction : task =>
