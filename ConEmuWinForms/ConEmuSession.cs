@@ -709,8 +709,11 @@ namespace ConEmu.WinForms
 
                     if (!rootinfo.Pid.HasValue && rootinfo.State == GetInfoRoot.States.NotStarted) {
                         var info = this.StartInfo;
-                        if (!_process.HasExited && _process.Handle != IntPtr.Zero)
+                        if (!_process.HasExited && info.AllowUsedUp && _process.Handle != IntPtr.Zero)
+                        {
+                            info.AllowUsedUp = false;
                             _process.Start();
+                        }
                     }
 
                     // If it has started already, must get a PID
