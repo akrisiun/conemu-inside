@@ -122,15 +122,15 @@ namespace ConEmu.WinForms
         /// </summary>
         public bool IsConsoleEmulatorOpen => _running != null;
 
-        [NotNull]
+        /* [NotNull]
         public ConEmuSession Start(
-            [NotNull] ConEmuStartInfo startinfo,
-            [CanBeNull] Microsoft.VisualStudio.Threading.JoinableTaskFactory factory // A factory for starting asynchronous tasks that can mitigate deadlocks
+            [NotNull] ConEmuStartInfo startinfo
+            // [CanBeNull] Microsoft.VisualStudio.Threading.JoinableTaskFactory factory // A factory for starting asynchronous tasks that can mitigate deadlocks
             )
         {
             startinfo.AllowUsedUp = true;
             return Start(startinfo);
-        }
+        } */
 
 		/// <summary>
 		///     <para>Starts a new console process in the console emulator control, and shows the console emulator view. When a session is not running, the control is blank.</para>

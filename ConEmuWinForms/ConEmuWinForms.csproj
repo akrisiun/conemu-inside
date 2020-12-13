@@ -8,7 +8,7 @@
     <RootNamespace>ConEmu.WinForms</RootNamespace>
     <AssemblyName>ConEmu.WinForms</AssemblyName>
     <TargetFrameworks>net45;net471</TargetFrameworks>
-    <!--<TargetFrameworkVersion>v4.5</TargetFrameworkVersion>-->
+    
     <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
     <EnableDefaultEmbededResourceItems>true</EnableDefaultEmbededResourceItems>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
@@ -17,7 +17,6 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <!--<OutputPath>..\..\bin\</OutputPath>-->
     <DefineConstants>TRACE;DEBUG</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -31,14 +30,13 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
     <DebugSymbols>true</DebugSymbols>
-    <!--<OutputPath>..\..\..\bin\Release\</OutputPath>-->
     <DefineConstants>TRACE</DefineConstants>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <NoWarn>1696;1591</NoWarn>
     <DebugType>full</DebugType>
     <PlatformTarget>x64</PlatformTarget>
     <ErrorReport>prompt</ErrorReport>
-    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSet></CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -79,12 +77,11 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="ConEmu.xml" />
-    <EmbeddedResource Include="Resources.resx" />
+    <!-- <EmbeddedResource Include="Resources.resx" /> -->
     <None Include="Package.nuspec">
         <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="packages.config" />
     <None Include="Snk.Snk" />
   </ItemGroup>
-  <!--<Import Project="..\ConEmu.Core.Targets" />-->
 </Project>
