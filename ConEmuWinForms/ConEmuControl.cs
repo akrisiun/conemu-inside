@@ -172,7 +172,7 @@ namespace ConEmu.WinForms
 			{
 				try
 				{
-					_nLastExitCode = _running.GetConsoleProcessExitCode();
+					_nLastExitCode = _running?.GetConsoleProcessExitCode() ?? 0;
 				}
 				catch(Exception)
 				{
